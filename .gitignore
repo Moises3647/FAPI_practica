@@ -1,0 +1,63 @@
+venv/
+.venv/
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.db
+.env
+.vscode/
+.idea/
+dist/
+build/
+*.egg-info/
+```
+
+# FastAPI Project
+
+Este es un proyecto desarrollado con FastAPI. Sigue los pasos a continuación para configurar y ejecutar el entorno de desarrollo.
+
+## Requisitos Previos
+
+*   Python 3.10 o superior
+*   Pip (gestor de paquetes de Python)
+*   Virtualenv (opcional, pero recomendado)
+
+## Instalación
+
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone <url-del-repositorio>
+    cd FAPI_practica
+    ```
+
+2.  **Crear un entorno virtual:**
+    ```bash
+    python -m venv venv
+    ```
+
+3.  **Activar el entorno virtual:**
+    *   En Windows:
+        ```bash
+        venv\Scripts\activate
+        ```
+    *   En macOS/Linux:
+        ```bash
+        source venv/bin/activate
+        ```
+
+4.  **Instalar las dependencias:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+## Configuración
+
+Crea un archivo `.env` en la raíz del proyecto y configura las variables de entorno necesarias (ejemplo: base de datos, claves secretas, etc.).
+
+## Ejecución
+
+Para iniciar el servidor de desarrollo con recarga automática:
+
+```bash
+uvicorn main:app --reload
