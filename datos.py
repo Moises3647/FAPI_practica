@@ -1,13 +1,13 @@
 from  pydantic import BaseModel
 
-class Producto_create(BaseModel):
+class data_create(BaseModel):
         id: int
-        Nombre: str
-        precio: float
+        Temp: float
+        Humed: float
 
-class Producto_response(BaseModel):
+class data_responce(BaseModel):
         id: int
-        Nombre: str
-        precio: float
+        Temp: float
+        Humed: float
 
 

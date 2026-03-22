@@ -1,9 +1,9 @@
 from sqlalchemy import Column,Integer,String,Float
 from  database import Base
 
-class Producto(Base):
-    __tablename__="productos"
+class Data(Base):
+    __tablename__="Data"
     id = Column(Integer, primary_key=True, index=True)
-    Nombre = Column(String, index=True)
-    precio = Column(Float)
+    Temp = Column(Float)
+    Humed = Column(Float)
 

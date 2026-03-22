@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 import model, datos
-import productos.crud as crud
+import data.crud as crud
 from database import SessionLocal,engine
 
 model.Base.metadata.create_all(bind=engine)
@@ -15,31 +15,31 @@ def get_db():
     finally:
         db.close()
 
-@app.get('/productos/{producto_id}', response_model=datos.Producto_response)
-def get_product(producto_id,db:Session = Depends(get_db)):
-      db_producto = crud.find_product(db,producto_id)
-      if db_producto is None:
-            raise HTTPException(status_code=404, detail="No existe el producto")
-      return db_producto
-@app.get('/productos', response_model=list[datos.Producto_response])
-def get_all_productos(db:Session = Depends(get_db)):
-        productos= crud.get_products(db)
-        return productos
+@app.get('/data/{data_id}', response_model=datos.data_responce)
+def get_data(data_id,db:Session = Depends(get_db)):
+      db_data = crud.find_data(db,data_id)
+      if db_data is None:
+            raise HTTPException(status_code=404, detail="No existe el data")
+      return db_data
+@app.get('/data', response_model=list[datos.data_responce])
+def get_all_data(db:Session = Depends(get_db)):
+        data= crud.get_data(db)
+        return data
 
-@app.post('/productos', response_model=datos.Producto_response)
-def crear_producto(producto: datos.Producto_create, db:Session = Depends(get_db)):
-        return crud.create_product(db,producto=producto)
+@app.post('/data', response_model=datos.data_responce)
+def crear_data(data: datos.data_create, db:Session = Depends(get_db)):
+        return crud.create_data(db,data=data)
 
-@app.put('/productos/{producto_id}',response_model=datos.Producto_create)
-def actualizar_producto(producto_id:int, producto:datos.Producto_create,db:Session=Depends(get_db)):
-      producto_db=crud.update_product(db,producto_id,producto)
-      if producto_db is None:
-            raise HTTPException(status_code=404, detail="No existe el producto")
-      return producto_db
+@app.put('/data/{data_id}',response_model=datos.data_create)
+def actualizar_data(data_id:int, data:datos.data_create,db:Session=Depends(get_db)):
+      data_db=crud.update_data(db,data_id,data)
+      if data_db is None:
+            raise HTTPException(status_code=404, detail="No existe el data")
+      return data_db
 
-@app.delete('/productos/{producto_id}',response_model=datos.Producto_response)
-def eliminar_producto(producto_id:int,db:Session=Depends(get_db)):
-      producto_db=crud.del_product(db,producto_id)
-      if producto_db is None:
-            raise HTTPException(status_code=404, detail="No existe el producto")
-      return producto_db    
+@app.delete('/data/{data_id}',response_model=datos.data_responce)
+def eliminar_data(data_id:int,db:Session=Depends(get_db)):
+      data_db=crud.del_data(db,data_id)
+      if data_db is None:
+            raise HTTPException(status_code=404, detail="No existe el data")
+      return data_db    
