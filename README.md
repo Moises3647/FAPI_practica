@@ -1,6 +1,6 @@
-# API de Gestión de Productos (FastAPI)
+# API de Gestión de Datos de Sensores (FastAPI)
 
-Este proyecto es una API RESTful desarrollada con [FastAPI](https://fastapi.tiangolo.com/) para la gestión de productos. Permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre una base de datos.
+Este proyecto es una API RESTful desarrollada con [FastAPI](https://fastapi.tiangolo.com/) para la gestión de lecturas de sensores (Temperatura y Humedad). Permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) utilizando una base de datos SQLite y SQLAlchemy.
 
 ## Requisitos
 
@@ -53,8 +53,8 @@ Una vez que el servidor esté corriendo, puedes acceder a la documentación inte
 *   **ReDoc:** http://127.0.0.1:8000/redoc - Documentación alternativa.
 
 Los endpoints disponibles son:
-*   `GET /productos`: Listar productos.
-*   `POST /productos`: Crear producto.
-*   `GET /productos/{id}`: Obtener detalle.
-*   `PUT /productos/{id}`: Actualizar.
-*   `DELETE /productos/{id}`: Eliminar.
+*   `GET /data`: Listar todos los registros de sensores.
+*   `POST /data`: Crear un nuevo registro (Temp, Humed).
+*   `GET /data/{data_id}`: Obtener detalle de un registro específico.
+*   `PUT /data/{data_id}`: Actualizar un registro existente.
+*   `DELETE /data/{data_id}`: Eliminar un registro.
